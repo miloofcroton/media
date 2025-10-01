@@ -118,10 +118,10 @@ fn main() {
   //   MaybeMedia::HasValue(value) => println!("{:#?}", value),
   //   MaybeMedia::NoValue => println!("nothing at index"),
   // }
-  match catalog.getByIndex(0) {
-    Some(value) => println!("{:#?}", value),
-    None => println!("nothing at index"),
-  }
+  // match catalog.getByIndex(0) {
+  //   Some(value) => println!("{:#?}", value),
+  //   None => println!("nothing at index"),
+  // }
 
   // if let MaybeMedia::HasValue(value) = catalog.getByIndex(1110) {
   //   println!("Item in pattern match: {:#?}", value)
@@ -129,13 +129,23 @@ fn main() {
   // else {
   //   println!("No item available.")
   // }
-  if let Some(value) = catalog.getByIndex(1110) {
-    println!("Item in pattern match: {:#?}", value)
-  }
-  else {
-    println!("No item available.")
-  }
+  // if let Some(value) = catalog.getByIndex(1110) {
+  //   println!("Item in pattern match: {:#?}", value)
+  // }
+  // else {
+  //   println!("No item available.")
+  // }
 
   // println!("{:#?}", catalog.getByIndex(0));
   // println!("{:#?}", catalog.getByIndex(40));
+
+  let item0 = catalog.getByIndex(0);
+  let item40 = catalog.getByIndex(40);
+  let defaultItem = Media::Placeholder;
+
+  println!("{:#?}", item0.unwrap());
+  println!("{:#?}", item40.unwrap_or(&defaultItem));
+
+  // item0.expect("ASDFASDF");
+  // item40.expect("ASDFASDF");
 }
